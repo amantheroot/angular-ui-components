@@ -1,0 +1,69 @@
+<div class="li__container">
+  <div class="li__thumbnail">
+    <div class="li__thumb--img">
+      <a href="#">
+        <img [src]="property.imgUrl" alt="Property image" />
+      </a>
+    </div>
+    <div class="li__thumb--feat">
+      <ul>
+        <li *ngIf="property.features.new"><span class="badge--special">New</span></li>
+        <li *ngIf="property.features.featured"><span class="badge--special">Featured</span></li>
+        <li *ngIf="property.features.forSale"><span>For Sale</span></li>
+        <li *ngIf="property.features.forRent"><span>For Rent</span></li>
+      </ul>
+    </div>
+    <div class="li__thumb--foot">
+      <div class="li__thumbfoot--dealer">
+        <a href="#">
+          <img [src]="property.dealer.avatarUrl" alt="Dealer image" />
+          <span>{{ property.dealer.dealerName }}</span>
+        </a>
+      </div>
+      <div class="li__thumbfoot--btns">
+        <ul>
+          <li *ngIf="property.photos.length > 0"><a href="#" title="Photos"><fa-icon [icon]="faCamera"></fa-icon></a></li>
+          <li><a href="#" title="Bookmark"><fa-icon [icon]="faHeart"></fa-icon></a></li>
+          <li><a href="#" title="Add to Compare"><fa-icon [icon]="faArrowsAltH" title="Add to Compare"> title="Add to Compare"</fa-icon></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="li__details">
+    <div class="li__details--1">
+      <div class="li__details--header">
+        <div class="li__details--name">{{ property.propertyName }}</div>
+        <div class="li__details--location"><fa-icon [icon]="faMapMarkerAlt"></fa-icon>{{ property.location }}</div>
+      </div>
+      <div class="li__details--information">
+        <div><fa-icon [icon]="faBed"></fa-icon> {{ property.information.bedrooms }} Bedrooms</div>
+        <div><fa-icon [icon]="faArrowsAlt"></fa-icon>{{ property.information.area }} sq ft</div>
+        <div><fa-icon [icon]="faBath"></fa-icon>{{ property.information.baths }} Baths</div>
+        <div><fa-icon [icon]="faCar"></fa-icon>{{ property.information.garages }} Garages</div>
+      </div>
+      <hr />
+      <div class="li__details--footer">
+        <div class="li__details--posted"><fa-icon [icon]="faCalendarAlt"></fa-icon> {{ property.posted }} days ago</div>
+        <div class="li__details--rating">
+          <ul>
+            <li *ngFor="let rate of ratingList">
+              <fa-icon *ngIf="rate === 1" [icon]="faStar"></fa-icon>
+              <fa-icon *ngIf="rate === 0.5" [icon]="faStarHalfAlt"></fa-icon>
+              <fa-icon *ngIf="rate === 0" [icon]="faStarReg"></fa-icon>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="li__details--2">
+      <div class="li__details--price">
+        <strong>{{ "$" + property.cost }} <span>/</span></strong> Month
+      </div>
+      <div class="li__details--btn">
+        <a href="#">
+          <button>Take a tour</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
